@@ -41,6 +41,13 @@ app.get("/test", (req, res) => {
 app.get("/home", (req, res) => {
   res.send("✅ Home route working");
 });
+
+app.use(express.static(path.join(__dirname, "../frontend/dist")));
+
+app.use((req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+});
+
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
