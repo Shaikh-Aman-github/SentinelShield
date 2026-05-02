@@ -11,9 +11,6 @@ const alertRoutes = require("./routes/alertRoutes");
 const detector = require("./middleware/detector");
 const rateLimiter = require("./middleware/rateLimiter");
 
-console.log("detector:", detector);
-console.log("rateLimiter:", rateLimiter);
-
 const app = express();
 
 app.use(cors());

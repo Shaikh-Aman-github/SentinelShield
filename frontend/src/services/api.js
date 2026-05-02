@@ -6,12 +6,8 @@ const API = axios.create({
   baseURL: URL
 });
 
-export const getStats = () => API.get("/stats");
-export const getLogs = () => API.get("/logs");
-export const getAlerts = () => API.get("/alerts");
-
-export const markAlertAsSent = () =>
-  API.put("/alerts/mark-sent");
-
-export const getAlertHistory = () =>
-  API.get("/alerts/history");
+export const getStats = () => axios.get(`${API}/stats`);
+export const getLogs = () => axios.get(`${API}/logs`);
+export const getAlerts = () => axios.get(`${API}/alerts`);
+export const getAlertHistory = () => axios.get(`${API}/alerts/history`);
+export const markAlertAsSent = () => axios.post(`${API}/alerts/mark-sent`);

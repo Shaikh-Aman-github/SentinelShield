@@ -9,3 +9,7 @@ node_modules/
 # Build folders (frontend frameworks)
 dist/
 build/
+
+#Log file
+backend/data/alerts.json
+backend/data/logs.json
