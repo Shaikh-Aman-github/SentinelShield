@@ -1,6 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 
+const PORT = process.env.PORT || 3000;
+
 const logRoutes = require("./routes/logRoutes");
 const statsRoutes = require("./routes/statsRoutes");
 const alertRoutes = require("./routes/alertRoutes");
@@ -38,6 +40,6 @@ app.get("/test", (req, res) => {
 app.get("/home", (req, res) => {
   res.send("✅ Home route working");
 });
-app.listen(3000, () => {
-  console.log("Server running on http://localhost:3000");
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
 });
