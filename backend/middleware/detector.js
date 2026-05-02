@@ -14,7 +14,7 @@ module.exports = (req, res, next) => {
     return next();
   }
 
-  const ip = req.headers["x-forwarded-for"] || req.ip;
+  const ip = req.headers["x-forwarded-for"]?.split(",")[0].trim() || req.ip;
 
   // 🔥 Header inspection
   const userAgent = (req.headers["user-agent"] || "").toLowerCase();

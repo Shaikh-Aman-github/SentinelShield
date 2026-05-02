@@ -1,13 +1,15 @@
 import axios from "axios";
 
-const URL = process.env.URL || "http://localhost:3000";
+// Vite environment variable
+const URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const API = axios.create({
   baseURL: URL
 });
 
-export const getStats = () => axios.get(`${API}/stats`);
-export const getLogs = () => axios.get(`${API}/logs`);
-export const getAlerts = () => axios.get(`${API}/alerts`);
-export const getAlertHistory = () => axios.get(`${API}/alerts/history`);
-export const markAlertAsSent = () => axios.post(`${API}/alerts/mark-sent`);
+// use API instance
+export const getStats = () => API.get("/stats");
+export const getLogs = () => API.get("/logs");
+export const getAlerts = () => API.get("/alerts");
+export const getAlertHistory = () => API.get("/alerts/history");
+export const markAlertAsSent = () => API.post("/alerts/mark-sent");

@@ -174,5 +174,159 @@
     "lastTriggered": "2026-05-02T16:37:56.307Z",
     "markAsRead": "No",
     "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:38:56.290Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:38:56.290Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:38:56.329Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:38:56.329Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:39:43.387Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:39:43.387Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:39:56.278Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:39:56.278Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:42:43.466Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:42:43.466Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:42:43.485Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:42:43.485Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:42:54.260Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:42:54.260Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:43:04.269Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:43:04.269Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:43:14.268Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:43:14.268Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:43:24.272Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:43:24.272Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:43:34.261Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:43:34.261Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:43:44.262Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:43:44.262Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:43:54.273Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:43:54.273Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
+  },
+  {
+    "time": "2026-05-02T16:44:48.538Z",
+    "ip": "::1",
+    "type": "Command Injection",
+    "url": "/",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T16:44:48.538Z",
+    "markAsRead": "No",
+    "sendToAdmin": "No"
   }
 ]

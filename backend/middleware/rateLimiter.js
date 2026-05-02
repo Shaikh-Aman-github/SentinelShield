@@ -5,7 +5,7 @@ const requestMap = {}; // store IP activity
 
 module.exports = (req, res, next) => {
   // safer IP detection
-  const ip = req.headers["x-forwarded-for"] || req.ip;
+  const ip = req.headers["x-forwarded-for"]?.split(",")[0].trim() || req.ip;
   const currentTime = Date.now();
 
   const WINDOW_SIZE = 10 * 1000; // 10 seconds
