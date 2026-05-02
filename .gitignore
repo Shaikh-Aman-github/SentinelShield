@@ -6,6 +6,6 @@ node_modules/
 .env
 **/.env
 
-# # Build folders (frontend frameworks)
-# dist/
-# build/
+# Build folders (frontend frameworks)
+dist/
+build/
