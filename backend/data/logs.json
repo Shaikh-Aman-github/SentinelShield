@@ -1,0 +1,291 @@
+[
+  {
+    "time": "2026-04-26T18:09:57.473Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "SQL Injection",
+    "url": "/login?user=admin%27%20OR%201=1--",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:09:57.473Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:10:45.614Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "SQL Injection",
+    "url": "/login?user=admin%27%20OR%201=1--",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:10:45.614Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:10:46.942Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "XSS",
+    "url": "/?q=<script>alert(1)</script>",
+    "severity": "HIGH",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:10:46.942Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:11:13.452Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "LFI",
+    "url": "/?file=/etc/passwd",
+    "severity": "HIGH",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:11:13.452Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:11:37.906Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "Directory Traversal",
+    "url": "/?path=../../secret",
+    "severity": "MEDIUM",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:11:37.906Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:11:57.030Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "Command Injection",
+    "url": "/?cmd=test;ls",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:11:57.030Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:12:21.672Z",
+    "ip": "::1",
+    "ipStatus": "Suspicious",
+    "type": "Rate Limit",
+    "url": "/test",
+    "severity": "LOW",
+    "count": 10,
+    "lastTriggered": "2026-04-26T18:12:21.937Z",
+    "status": "Active",
+    "details": [
+      {
+        "time": "2026-04-26T18:12:21.672Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      },
+      {
+        "time": "2026-04-26T18:12:21.703Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      },
+      {
+        "time": "2026-04-26T18:12:21.735Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      },
+      {
+        "time": "2026-04-26T18:12:21.765Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      },
+      {
+        "time": "2026-04-26T18:12:21.796Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      },
+      {
+        "time": "2026-04-26T18:12:21.826Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      },
+      {
+        "time": "2026-04-26T18:12:21.854Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      },
+      {
+        "time": "2026-04-26T18:12:21.881Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      },
+      {
+        "time": "2026-04-26T18:12:21.908Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      },
+      {
+        "time": "2026-04-26T18:12:21.937Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Rate limit exceeded for repeated requests"
+      }
+    ],
+    "history": [
+      {
+        "attemptTime": "2026-04-26T18:12:21.672Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      },
+      {
+        "attemptTime": "2026-04-26T18:12:21.703Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      },
+      {
+        "attemptTime": "2026-04-26T18:12:21.735Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      },
+      {
+        "attemptTime": "2026-04-26T18:12:21.765Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      },
+      {
+        "attemptTime": "2026-04-26T18:12:21.796Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      },
+      {
+        "attemptTime": "2026-04-26T18:12:21.826Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      },
+      {
+        "attemptTime": "2026-04-26T18:12:21.854Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      },
+      {
+        "attemptTime": "2026-04-26T18:12:21.881Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      },
+      {
+        "attemptTime": "2026-04-26T18:12:21.908Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      },
+      {
+        "attemptTime": "2026-04-26T18:12:21.937Z",
+        "url": "/test",
+        "method": "GET",
+        "message": "Repeated attacker behavior detected"
+      }
+    ]
+  },
+  {
+    "time": "2026-04-26T18:12:58.263Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "Suspicious Header Activity",
+    "url": "/test",
+    "severity": "UNKNOWN",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:12:58.263Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:13:37.993Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "SQL Injection",
+    "url": "/test",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:13:37.993Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:16:02.679Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "SQL Injection",
+    "url": "/test",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:16:02.679Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:16:42.914Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "SQL Injection",
+    "url": "/test",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:16:42.914Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:17:16.798Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "XSS",
+    "url": "/test",
+    "severity": "HIGH",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:17:16.798Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-04-26T18:17:31.585Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "SQL Injection",
+    "url": "/test",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-04-26T18:17:31.585Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-05-02T14:35:57.847Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "Command Injection",
+    "url": "/?cmd=test;ls",
+    "severity": "CRITICAL",
+    "count": 1,
+    "lastTriggered": "2026-05-02T14:35:57.847Z",
+    "status": "Active"
+  },
+  {
+    "time": "2026-05-02T14:36:08.999Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "type": "Directory Traversal",
+    "url": "/?path=../../secret",
+    "severity": "MEDIUM",
+    "count": 1,
+    "lastTriggered": "2026-05-02T14:36:08.999Z",
+    "status": "Active"
+  }
+]

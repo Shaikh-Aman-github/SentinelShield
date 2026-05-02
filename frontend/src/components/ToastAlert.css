@@ -1,0 +1,78 @@
+.critical-alert {
+  background: #e53935;
+}
+
+.warning-alert {
+  background: #fb8c00;
+}
+
+.medium-alert {
+  background: #fdd835;
+  color: black;
+}
+
+.info-alert {
+  background: #1e88e5;
+}
+
+.default-alert {
+  background: #757575;
+}
+
+.toast-alert {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  width: 360px;
+  color: white;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+  animation: slideInRight 0.4s ease;
+}
+
+.toast-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toast-header h3 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.toast-message {
+  margin-top: 10px;
+  font-size: 15px;
+}
+
+.toast-time {
+  margin-top: 8px;
+  font-size: 13px;
+  opacity: 0.9;
+}
+
+.close-btn {
+  background: transparent;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.close-btn:hover {
+  opacity: 0.8;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(120%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+

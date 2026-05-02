@@ -1,0 +1,11 @@
+# Ignore node modules (ALL folders)
+node_modules/
+**/node_modules/
+
+# Environment files
+.env
+**/.env
+
+# Build folders (frontend frameworks)
+dist/
+build/
