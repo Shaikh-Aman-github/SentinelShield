@@ -21,14 +21,14 @@ app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 
-// middleware
-app.use(rateLimiter);
-app.use(detector);
+// // middleware
+// app.use(rateLimiter);
+// app.use(detector);
 
 // routes
-app.use("/logs", logRoutes);
-app.use("/stats", statsRoutes);
-app.use("/alerts", alertRoutes);
+app.use("/logs", rateLimiter, detector, logRoutes);
+app.use("/stats", rateLimiter, detector, statsRoutes);
+app.use("/alerts", rateLimiter, detector, alertRoutes);
 
 app.get("/", (req, res) => {
   res.send("🚀 SentinelShield MVC Running");
