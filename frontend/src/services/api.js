@@ -1,7 +1,9 @@
 import axios from "axios";
 
+const URL = process.env.URL || "http://localhost:3000";
+
 const API = axios.create({
-  baseURL: "http://localhost:3000"
+  baseURL: URL
 });
 
 export const getStats = () => API.get("/stats");
