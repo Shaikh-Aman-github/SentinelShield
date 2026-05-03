@@ -23,13 +23,21 @@ const writeAlerts = (alerts) => {
 router.get("/", (req, res) => {
   let alerts = readAlerts();
 
-  const newAlerts = alerts
-    .filter(alert => alert.sendToAdmin === "No")
-    .slice(-1); // only latest popup
+  const index = alerts.findIndex(alert => alert.sendToAdmin === "No");
 
-  res.json(newAlerts);
+  if (index === -1) {
+    return res.json([]); // no new alerts
+  }
+
+  const alertToSend = alerts[index];
+
+  // 🔥 Immediately mark as sent
+  alerts[index].sendToAdmin = "Yes";
+
+  writeAlerts(alerts);
+
+  res.json([alertToSend]);
 });
-
 
 // GET full alert history
 router.get("/history", (req, res) => {

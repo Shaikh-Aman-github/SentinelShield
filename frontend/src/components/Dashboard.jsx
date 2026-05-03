@@ -18,8 +18,13 @@ export default function Dashboard() {
   const [toastAlert, setToastAlert] = useState(null);
   const [lastShownAlertTime, setLastShownAlertTime] = useState(null);
   
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
   const loadData = async () => {
     try {
+      setLoading(true);
+   
       const statsRes = await getStats();
       const logsRes = await getLogs();
       const alertsRes = await getAlerts();
@@ -28,23 +33,30 @@ export default function Dashboard() {
       const latestAlerts = alertsRes.data;
 
       if (latestAlerts.length > 0) {
-        setToastAlert(latestAlerts[0]);
+        const latest = latestAlerts[0];
 
-        // mark popup as already sent
-        await markAlertAsSent();
+        if (latest.time !== lastShownAlertTime) {
+          setToastAlert(latest);
+          setLastShownAlertTime(latest.time);
 
-        setTimeout(() => {
-          setToastAlert(null);
-        }, 3000);
+          await markAlertAsSent(latest.id);
+
+          setTimeout(() => {
+            setToastAlert(null);
+          }, 3000);
+        }
       }
 
       setAlerts(historyRes.data);
       setStats(statsRes.data);
       setLogs(logsRes.data);
 
+    setError(null);
     } catch (err) {
-      console.error(err);
-    }
+      setError("Failed to load dashboard data");
+    } finally {
+      setLoading(false);
+   }
   };
 
   useEffect(() => {
@@ -53,6 +65,8 @@ export default function Dashboard() {
     return () => clearInterval(interval);
   }, []);
 
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>{error}</p>;
   
   return (
     <div style={{ padding: "20px" }}>
@@ -79,7 +93,6 @@ export default function Dashboard() {
         <StatsCard title="Rate Limit" value={stats.rate || 0} />
       </div>
 
-      <h2>📊 Attack Chart</h2>
       <AttackChart stats={stats} />
 
       <h2>🔥 Top Attacker IPs</h2>

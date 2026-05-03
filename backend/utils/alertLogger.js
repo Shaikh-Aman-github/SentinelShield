@@ -1,6 +1,8 @@
 const fs = require("fs");
 const path = require("path");
 
+const { getGeoData, getSourceType, getRiskScore, getFingerprint, getPayload } = require("./enrichData");
+
 const alertFile = path.join(__dirname, "../data/alerts.json");
 
 const getSeverity = (type) => {
@@ -8,23 +10,24 @@ const getSeverity = (type) => {
     case "SQL Injection":
     case "Command Injection":
       return "CRITICAL";
-
     case "XSS":
     case "LFI":
       return "HIGH";
-
     case "Directory Traversal":
       return "MEDIUM";
-
     case "Rate Limit":
       return "LOW";
-
     default:
       return "UNKNOWN";
   }
 };
 
-module.exports = (ip, type, url) => {
+module.exports = async (req, type) => {
+  const ip =
+    req.headers["x-forwarded-for"]?.split(",")[0].trim() || req.ip;
+  const userAgent = req.headers["user-agent"] || "unknown";
+  const url = req.originalUrl;
+
   let alerts = [];
 
   try {
@@ -35,7 +38,10 @@ module.exports = (ip, type, url) => {
 
   const currentTime = new Date().toISOString();
 
-  // 🔥 Special handling for Rate Limit session-based logic
+  
+  const geo = await getGeoData(ip);
+
+  // 🔥 Rate Limit session logic
   if (type === "Rate Limit") {
     const existingAlert = alerts.find((alert) => {
       if (
@@ -47,13 +53,9 @@ module.exports = (ip, type, url) => {
       }
 
       const lastTime = new Date(alert.lastTriggered).getTime();
-      const now = Date.now();
-
-      // merge only if within 2 minutes
-      return now - lastTime < 2 * 60 * 1000;
+      return Date.now() - lastTime < 2 * 60 * 1000;
     });
 
-    // existing session → update count only
     if (existingAlert) {
       existingAlert.count = (existingAlert.count || 1) + 1;
       existingAlert.lastTriggered = currentTime;
@@ -64,9 +66,10 @@ module.exports = (ip, type, url) => {
     }
   }
 
-  // create NEW alert entry
+  // ✅ New alert entry
   const newAlert = {
-    time: currentTime,
+    requestId: `req_${Date.now()}`,
+    time: new Date().toISOString(),
     ip,
     type,
     url,
@@ -74,6 +77,10 @@ module.exports = (ip, type, url) => {
 
     count: 1,
     lastTriggered: currentTime,
+
+    //NEW metadata
+    method: req.method,
+    userAgent: req.headers["user-agent"] || "unknown",
 
     markAsRead: "No",
     sendToAdmin: "No"

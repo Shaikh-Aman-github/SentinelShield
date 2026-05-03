@@ -1,4 +1,8 @@
+import DOMPurify from "dompurify";
+
 export default function LogsTable({ logs }) {
+  const sanitize = (data) => DOMPurify.sanitize(data);
+
   return (
     <table border="1" width="100%">
       <thead>
@@ -10,12 +14,14 @@ export default function LogsTable({ logs }) {
         </tr>
       </thead>
       <tbody>
-        {logs.map((log, i) => (
+        {logs.slice(0, 50).map((log, i) => (
           <tr key={i}>
             <td>{new Date(log.time).toLocaleString()}</td>
-            <td>{log.ip}</td>
-            <td>{log.type}</td>
-            <td>{log.url}</td>
+
+            {/* sanitize all dynamic fields */}
+            <td>{sanitize(log.ip)}</td>
+            <td>{sanitize(log.type)}</td>
+            <td>{sanitize(log.url)}</td>
           </tr>
         ))}
       </tbody>

@@ -1,6 +1,7 @@
 {
   "ignore": [
     "data/logs.json",
-    "data/alerts.json"
+    "data/alerts.json",
+    "data/*.json"
   ]
 }

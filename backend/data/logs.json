@@ -1,332 +1,103 @@
 [
   {
-    "time": "2026-05-02T16:34:42.269Z",
+    "requestId": "req_1777747266688",
+    "time": "2026-05-02T18:41:06.688Z",
     "ip": "::1",
     "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
     "type": "Command Injection",
-    "url": "/",
+    "pattern": "Command Injection via request",
+    "payload": "{\"cmd\":\"test;ls\"}",
+    "url": "/logs?cmd=test;ls",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_CommandInjection",
     "severity": "CRITICAL",
+    "riskScore": 10,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
     "count": 1,
-    "lastTriggered": "2026-05-02T16:34:42.269Z",
-    "status": "Active"
+    "lastTriggered": "2026-05-02T18:41:06.688Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "cmd": "test;ls"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
   },
   {
-    "time": "2026-05-02T16:34:52.275Z",
+    "time": "2026-05-02T19:27:31.278Z",
     "ip": "::1",
     "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:34:52.275Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:34:56.268Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:34:56.268Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:35:02.263Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:35:02.263Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:35:12.276Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:35:12.276Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:35:22.257Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:35:22.257Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:35:32.282Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:35:32.282Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:35:42.272Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:35:42.272Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:35:52.262Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:35:52.262Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:35:56.262Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:35:56.262Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:36:02.256Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:36:02.256Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:36:12.271Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:36:12.271Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:36:56.268Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:36:56.268Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:36:56.303Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:36:56.303Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:37:56.273Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:37:56.273Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:37:56.306Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:37:56.306Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:38:56.289Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:38:56.289Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:38:56.324Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:38:56.324Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:39:43.383Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:39:43.383Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:39:56.276Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:39:56.276Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:42:43.465Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:42:43.465Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:42:43.484Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:42:43.484Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:42:54.259Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:42:54.259Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:43:04.268Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:43:04.268Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:43:14.267Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:43:14.267Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:43:24.271Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:43:24.271Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:43:34.260Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:43:34.260Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:43:44.260Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:43:44.260Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:43:54.271Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:43:54.271Z",
-    "status": "Active"
-  },
-  {
-    "time": "2026-05-02T16:44:48.537Z",
-    "ip": "::1",
-    "ipStatus": "Normal",
-    "type": "Command Injection",
-    "url": "/",
-    "severity": "CRITICAL",
-    "count": 1,
-    "lastTriggered": "2026-05-02T16:44:48.537Z",
-    "status": "Active"
+    "type": "Rate Limit",
+    "url": "/alerts",
+    "severity": "LOW",
+    "count": 2,
+    "lastTriggered": "2026-05-02T19:27:31.300Z",
+    "status": "Active",
+    "details": [
+      {
+        "time": "2026-05-02T19:27:31.278Z",
+        "url": "/alerts",
+        "method": "GET",
+        "message": "Rate limit exceeded"
+      },
+      {
+        "time": "2026-05-02T19:27:31.300Z",
+        "url": "/alerts",
+        "method": "GET",
+        "message": "Rate limit exceeded",
+        "request": {
+          "method": "GET",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+          "referer": "http://localhost:5173/",
+          "headers": {
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "query": {},
+          "body": null
+        }
+      }
+    ],
+    "history": [
+      {
+        "attemptTime": "2026-05-02T19:27:31.278Z",
+        "url": "/alerts",
+        "method": "GET",
+        "message": "Repeated attacker behavior"
+      },
+      {
+        "attemptTime": "2026-05-02T19:27:31.300Z",
+        "url": "/alerts",
+        "method": "GET",
+        "message": "Repeated attacker behavior",
+        "request": {
+          "method": "GET",
+          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+          "referer": "http://localhost:5173/",
+          "headers": {
+            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
+            "accept-language": "en-US,en;q=0.9"
+          },
+          "query": {},
+          "body": null
+        }
+      }
+    ]
   }
 ]

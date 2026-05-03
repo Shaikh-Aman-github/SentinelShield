@@ -16,17 +16,18 @@ const app = express();
 app.use(cors());
 
 app.use(express.json());
-app.use(express.urlencoded({ extended: true })); 
+app.use(express.urlencoded({ extended: true }));
 
-// // middleware
-// app.use(rateLimiter);
-// app.use(detector);
+// apply to ALL routes
+app.use(rateLimiter);
+app.use(detector);
 
-// routes
+// API routes (protected)
 app.use("/logs", rateLimiter, detector, logRoutes);
 app.use("/stats", rateLimiter, detector, statsRoutes);
 app.use("/alerts", rateLimiter, detector, alertRoutes);
 
+// test routes
 app.get("/", (req, res) => {
   res.send("🚀 SentinelShield MVC Running");
 });
@@ -35,10 +36,7 @@ app.get("/test", (req, res) => {
   res.send("✅ Test route working");
 });
 
-app.get("/home", (req, res) => {
-  res.send("✅ Home route working");
-});
-
+// ✅ frontend after API
 app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
 app.use((req, res) => {

@@ -12,4 +12,4 @@ export const getStats = () => API.get("/stats");
 export const getLogs = () => API.get("/logs");
 export const getAlerts = () => API.get("/alerts");
 export const getAlertHistory = () => API.get("/alerts/history");
-export const markAlertAsSent = () => API.post("/alerts/mark-sent");
+export const markAlertAsSent = (id) => API.post(`/alerts/${id}/mark-sent`);

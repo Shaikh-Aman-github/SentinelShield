@@ -1,8 +1,8 @@
 const logger = require("../utils/logger");
 const alertLogger = require("../utils/alertLogger");
 
-module.exports = (req, res, next) => {
-  // Ignore internal routes to prevent false positives
+module.exports = async (req, res, next) => {
+  // ✅ Ignore frontend & internal calls
   if (
     req.url.startsWith("/logs") ||
     req.url.startsWith("/stats") ||
@@ -10,16 +10,18 @@ module.exports = (req, res, next) => {
     req.url.startsWith("/favicon") ||
     req.url.includes(".js") ||
     req.url.includes(".css")
+    // || req.headers["user-agent"]?.includes("Mozilla")
   ) {
     return next();
   }
 
-  const ip = req.headers["x-forwarded-for"]?.split(",")[0].trim() || req.ip;
+  const startTime = Date.now();
 
-  // 🔥 Header inspection
+  const ip =
+    req.headers["x-forwarded-for"]?.split(",")[0].trim() || req.ip;
+
   const userAgent = (req.headers["user-agent"] || "").toLowerCase();
 
-  // 🔥 Full request inspection
   const requestData = `
     URL: ${req.url}
     METHOD: ${req.method}
@@ -30,9 +32,7 @@ module.exports = (req, res, next) => {
 
   let attackType = null;
 
-  // -------------------------
   // SQL Injection
-  // -------------------------
   const sqlPatterns = [
     /(\%27)|(\')|(\-\-)|(\%23)|(#)/i,
     /\b(or|and)\b.+\=/i,
@@ -40,42 +40,32 @@ module.exports = (req, res, next) => {
     /or 1=1/i
   ];
 
-  // -------------------------
   // XSS
-  // -------------------------
   const xssPatterns = [
     /<script.*?>.*?<\/script>/i,
     /onerror\s*=/i,
     /javascript:/i
   ];
 
-  // -------------------------
-  // LFI (Local File Inclusion)
-  // -------------------------
+  // LFI
   const lfiPatterns = [
     /etc\/passwd/i,
     /boot\.ini/i,
     /windows\/system32/i
   ];
 
-  // -------------------------
-  // Command Injection
-  // -------------------------
+  // ✅ FIXED Command Injection (NO false positives)
   const cmdPatterns = [
-    /(;|\||&&)\s*\w+/i
+    /(;|\||&&)\s*(ls|whoami|cat|pwd)/i
   ];
 
-  // -------------------------
   // Directory Traversal
-  // -------------------------
   const dirTraversalPatterns = [
     /\.\.\//i,
     /\.\.\\/i
   ];
 
-  // -------------------------
-  // Suspicious Header Detection
-  // -------------------------
+  // Suspicious headers
   const suspiciousHeaderPatterns = [
     /sqlmap/i,
     /nikto/i,
@@ -83,41 +73,23 @@ module.exports = (req, res, next) => {
     /burpsuite/i
   ];
 
-  // -------------------------
-  // Detection Logic
-  // -------------------------
-
-  // Suspicious header check first
   if (suspiciousHeaderPatterns.some((p) => p.test(userAgent))) {
     attackType = "Suspicious Header Activity";
-  }
-
-  else if (sqlPatterns.some((p) => p.test(requestData))) {
+  } else if (sqlPatterns.some((p) => p.test(requestData))) {
     attackType = "SQL Injection";
-  }
-
-  else if (xssPatterns.some((p) => p.test(requestData))) {
+  } else if (xssPatterns.some((p) => p.test(requestData))) {
     attackType = "XSS";
-  }
-
-  else if (lfiPatterns.some((p) => p.test(requestData))) {
+  } else if (lfiPatterns.some((p) => p.test(requestData))) {
     attackType = "LFI";
-  }
-
-  else if (cmdPatterns.some((p) => p.test(requestData))) {
+  } else if (cmdPatterns.some((p) => p.test(requestData))) {
     attackType = "Command Injection";
-  }
-
-  else if (dirTraversalPatterns.some((p) => p.test(requestData))) {
+  } else if (dirTraversalPatterns.some((p) => p.test(requestData))) {
     attackType = "Directory Traversal";
   }
 
-  // -------------------------
-  // ACTION (Detection Found)
-  // -------------------------
   if (attackType) {
-    logger(ip, attackType, req.url);
-    alertLogger(ip, attackType, req.url);
+    await logger(req, attackType, startTime);
+    await alertLogger(req, attackType);
 
     console.log(`🚨 ALERT: ${attackType} detected from ${ip}`);
 
