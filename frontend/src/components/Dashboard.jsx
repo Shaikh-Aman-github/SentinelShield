@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { io } from "socket.io-client";
 
 import { getStats, getLogs } from "../services/api";
 import { getAlerts, markAlertAsSent, getAlertHistory } from "../services/api";
@@ -8,7 +9,6 @@ import LogsTable from "./LogsTable";
 import AttackChart from "./AttackChart";
 import ToastAlert from "./ToastAlert";
 import AlertHistory from "./AlertHistory";
-
 
 export default function Dashboard() {
   const [stats, setStats] = useState({});
@@ -61,8 +61,38 @@ export default function Dashboard() {
 
   useEffect(() => {
     loadData();
-    const interval = setInterval(loadData, 10000);
-    return () => clearInterval(interval);
+
+    const socket = io("http://localhost:3000");
+
+    const typeMap = {
+      "sql injection": "sql",
+      "xss": "xss",
+      "lfi": "lfi",
+      "command injection": "cmd",
+      "directory traversal": "dir",
+      "rate limit": "rate"
+    };
+
+    socket.on("newAttack", (attack) => {
+      setLogs(prev => [attack, ...prev].slice(0, 100));
+
+      const key = typeMap[attack.type?.toLowerCase()];
+
+      if (key) {
+        setStats(prev => ({
+          ...prev,
+          total: (prev.total || 0) + 1,
+          [key]: (prev[key] || 0) + 1
+        }));
+      }
+    });
+
+    socket.on("newAlert", (alert) => {
+      setToastAlert(alert);
+      setTimeout(() => setToastAlert(null), 3000);
+    });
+
+    return () => socket.disconnect();
   }, []);
 
   if (loading) return <p>Loading...</p>;

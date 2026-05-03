@@ -1,6 +1,7 @@
-const fs = require("fs");
+const fs = require("fs/promises");
 const path = require("path");
 
+const { safeWrite } = require("./fileLock");
 const { getGeoData, getSourceType, getRiskScore, getFingerprint, getPayload } = require("./enrichData");
 
 const alertFile = path.join(__dirname, "../data/alerts.json");
@@ -31,7 +32,7 @@ module.exports = async (req, type) => {
   let alerts = [];
 
   try {
-    alerts = JSON.parse(fs.readFileSync(alertFile));
+    alerts = JSON.parse(await fs.readFile(alertFile, "utf-8"));
   } catch {
     alerts = [];
   }
@@ -61,7 +62,8 @@ module.exports = async (req, type) => {
       existingAlert.lastTriggered = currentTime;
       existingAlert.url = url;
 
-      fs.writeFileSync(alertFile, JSON.stringify(alerts, null, 2));
+      await safeWrite(alertFile, alerts)
+      alerts = JSON.parse(await fs.readFile(alertFile, "utf-8"))
       return;
     }
   }
@@ -83,10 +85,16 @@ module.exports = async (req, type) => {
     userAgent: req.headers["user-agent"] || "unknown",
 
     markAsRead: "No",
-    sendToAdmin: "No"
+    sendToAdmin: "Yes"
   };
 
   alerts.push(newAlert);
 
-  fs.writeFileSync(alertFile, JSON.stringify(alerts, null, 2));
+  await safeWrite(alertFile, alerts);
+
+  //emit real-time alert
+  const io = req.app.get("io");
+  if (io) {
+    io.emit("newAlert", newAlert);
+  }
 };

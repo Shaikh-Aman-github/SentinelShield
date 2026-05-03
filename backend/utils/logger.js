@@ -1,6 +1,7 @@
-const fs = require("fs");
+const fs = require("fs/promises");
 const path = require("path");
 
+const { safeWrite } = require("./fileLock");
 const { getGeoData, getSourceType, getRiskScore, getFingerprint, getPayload } = require("./enrichData");
 
 const logFile = path.join(__dirname, "../data/logs.json");
@@ -65,7 +66,7 @@ module.exports = async (req, type, detectionStartTime) => {
   let logs = [];
 
   try {
-    logs = JSON.parse(fs.readFileSync(logFile));
+    logs = JSON.parse(await fs.readFile(logFile, "utf-8"));
   } catch {
     logs = [];
   }
@@ -85,46 +86,39 @@ module.exports = async (req, type, detectionStartTime) => {
   // 🔥 Rate Limit logic (same as your version)
   if (type === "Rate Limit") {
     const existingLog = logs.find((log) => {
-      if (
-        log.type !== "Rate Limit" ||
-        log.ip !== ip ||
-        log.status === "Resolved"
-      ) {
-        return false;
-      }
-
-      const lastTime = new Date(log.lastTriggered).getTime();
-      return now - lastTime < 2 * 60 * 1000;
+      return log.type === "Rate Limit" && log.ip === ip;
     });
 
     if (existingLog) {
-      existingLog.count = (existingLog.count || 1) + 1;
+      existingLog.count += 1;
       existingLog.lastTriggered = currentTime;
-      existingLog.url = url;
 
-      if (!existingLog.details) existingLog.details = [];
-      if (!existingLog.history) existingLog.history = [];
-
+      if (existingLog.count >= 25) {
+        existingLog.ipStatus = "Malicious";
+      } else if (existingLog.count >= 10) {
+        existingLog.ipStatus = "Suspicious";
+      } else {
+        existingLog.ipStatus = "Normal";
+      }
+      
       existingLog.details.push({
         time: currentTime,
         url,
-        method: req.method,
-        message: "Rate limit exceeded",
+        method,
+        payload: getPayload(req),
+        riskScore: getRiskScore(type),
         request: getRequestMeta(req)
       });
 
       existingLog.history.push({
         attemptTime: currentTime,
         url,
-        method: req.method,
-        message: "Repeated attacker behavior",
-        request: getRequestMeta(req)
+        method,
+        payload: getPayload(req),
+        fingerprint: getFingerprint(ip, userAgent, type)
       });
 
-      existingLog.ipStatus =
-        existingLog.history.length > 3 ? "Suspicious" : "Normal";
-
-      fs.writeFileSync(logFile, JSON.stringify(logs, null, 2));
+      await safeWrite(logFile, logs);
       return;
     }
 
@@ -132,10 +126,17 @@ module.exports = async (req, type, detectionStartTime) => {
       time: currentTime,
       ip,
       ipStatus: "Normal",
+      geo,
 
       type,
-      url,
       severity: getSeverity(type),
+
+      url,
+      payload: getPayload(req),
+
+      sourceType: getSourceType(userAgent),
+      fingerprint: getFingerprint(ip, userAgent, type),
+      riskScore: getRiskScore(type),
 
       count: 1,
       lastTriggered: currentTime,
@@ -146,27 +147,26 @@ module.exports = async (req, type, detectionStartTime) => {
           time: currentTime,
           url,
           method,
-          message: "Rate limit exceeded"
+          payload: getPayload(req),
+          request: getRequestMeta(req)
         }
       ],
 
-      history: [
-        {
-          attemptTime: currentTime,
-          url,
-          method,
-          message: "Repeated attacker behavior"
-        }
-      ]
+      history: []
     };
 
     logs.push(newRateLimitLog);
 
-    fs.writeFileSync(logFile, JSON.stringify(logs, null, 2));
+    await safeWrite(logFile, logs);
+
+    const io = req.app.get("io");
+    if (io) {
+      io.emit("newAttack", newRateLimitLog);
+    }
+
     return;
   }
-
-  // ✅ Normal attack log
+  //Normal attack log
   const newLog = {
     requestId: `req_${Date.now()}`,
     time: currentTime,
@@ -208,5 +208,13 @@ module.exports = async (req, type, detectionStartTime) => {
 
   logs.push(newLog);
 
-  fs.writeFileSync(logFile, JSON.stringify(logs, null, 2));
+  await safeWrite(logFile, logs);
+
+  //emit real-time attack
+  const io = req.app.get("io");
+  if (io) {
+    io.emit("newAttack", newLog);
+  }
 };
+
+

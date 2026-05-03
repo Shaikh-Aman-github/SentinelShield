@@ -1,7 +1,167 @@
 [
   {
-    "requestId": "req_1777747266688",
-    "time": "2026-05-02T18:41:06.688Z",
+    "requestId": "req_1777814048961",
+    "time": "2026-05-03T13:14:08.961Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "SQL Injection",
+    "pattern": "SQL Injection via request",
+    "payload": "{\"user\":\"admin' OR 1=1--\"}",
+    "url": "/login?user=admin%27%20OR%201=1--",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_SQLInjection",
+    "severity": "CRITICAL",
+    "riskScore": 9,
+    "detectionTimeMs": 4,
+    "responseTimeMs": 4,
+    "count": 1,
+    "lastTriggered": "2026-05-03T13:14:08.961Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "user": "admin' OR 1=1--"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1777814058504",
+    "time": "2026-05-03T13:14:18.504Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "XSS",
+    "pattern": "XSS via request",
+    "payload": "{\"q\":\"<script>alert(1)</script>\"}",
+    "url": "/?q=<script>alert(1)</script>",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_XSS",
+    "severity": "HIGH",
+    "riskScore": 7,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-03T13:14:18.504Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "q": "<script>alert(1)</script>"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1777814068463",
+    "time": "2026-05-03T13:14:28.463Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "LFI",
+    "pattern": "LFI via request",
+    "payload": "{\"file\":\"/etc/passwd\"}",
+    "url": "/?file=/etc/passwd",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_LFI",
+    "severity": "HIGH",
+    "riskScore": 6,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-03T13:14:28.463Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "file": "/etc/passwd"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1777814077025",
+    "time": "2026-05-03T13:14:37.025Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Directory Traversal",
+    "pattern": "Directory Traversal via request",
+    "payload": "{\"path\":\"../../secret\"}",
+    "url": "/?path=../../secret",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_DirectoryTraversal",
+    "severity": "MEDIUM",
+    "riskScore": 5,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-03T13:14:37.025Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "path": "../../secret"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1777814089458",
+    "time": "2026-05-03T13:14:49.458Z",
     "ip": "::1",
     "ipStatus": "Normal",
     "geo": {
@@ -12,7 +172,7 @@
     "type": "Command Injection",
     "pattern": "Command Injection via request",
     "payload": "{\"cmd\":\"test;ls\"}",
-    "url": "/logs?cmd=test;ls",
+    "url": "/?cmd=test;ls",
     "sourceType": "Script",
     "fingerprint": "::1_curl_CommandInjection",
     "severity": "CRITICAL",
@@ -20,7 +180,7 @@
     "detectionTimeMs": 1,
     "responseTimeMs": 1,
     "count": 1,
-    "lastTriggered": "2026-05-02T18:41:06.688Z",
+    "lastTriggered": "2026-05-03T13:14:49.458Z",
     "attackStage": "Detected → Blocked",
     "status": "Active",
     "request": {
@@ -40,34 +200,529 @@
     "userAgent": "curl/8.18.0"
   },
   {
-    "time": "2026-05-02T19:27:31.278Z",
+    "time": "2026-05-03T13:14:58.897Z",
     "ip": "::1",
-    "ipStatus": "Normal",
+    "ipStatus": "Malicious",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
     "type": "Rate Limit",
-    "url": "/alerts",
     "severity": "LOW",
-    "count": 2,
-    "lastTriggered": "2026-05-02T19:27:31.300Z",
+    "url": "/test",
+    "payload": "N/A",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_RateLimit",
+    "riskScore": 3,
+    "count": 30,
+    "lastTriggered": "2026-05-03T13:21:49.114Z",
     "status": "Active",
     "details": [
       {
-        "time": "2026-05-02T19:27:31.278Z",
-        "url": "/alerts",
+        "time": "2026-05-03T13:14:58.897Z",
+        "url": "/test",
         "method": "GET",
-        "message": "Rate limit exceeded"
-      },
-      {
-        "time": "2026-05-02T19:27:31.300Z",
-        "url": "/alerts",
-        "method": "GET",
-        "message": "Rate limit exceeded",
+        "payload": "N/A",
         "request": {
           "method": "GET",
-          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
-          "referer": "http://localhost:5173/",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
           "headers": {
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
-            "accept-language": "en-US,en;q=0.9"
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:14:59.373Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:14:59.404Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:14:59.435Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:14:59.464Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:14:59.495Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:14:59.523Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:14:59.552Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:14:59.584Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:14:59.615Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:18.745Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:19.290Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:19.320Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:19.348Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:19.377Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:19.406Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:19.435Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:19.466Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:19.496Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:19.522Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:48.246Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:48.893Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:48.921Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:48.950Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:48.978Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:49.006Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:49.033Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:49.060Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:49.087Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-03T13:21:49.114Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
           },
           "query": {},
           "body": null
@@ -76,27 +731,207 @@
     ],
     "history": [
       {
-        "attemptTime": "2026-05-02T19:27:31.278Z",
-        "url": "/alerts",
+        "attemptTime": "2026-05-03T13:14:59.373Z",
+        "url": "/test",
         "method": "GET",
-        "message": "Repeated attacker behavior"
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
       },
       {
-        "attemptTime": "2026-05-02T19:27:31.300Z",
-        "url": "/alerts",
+        "attemptTime": "2026-05-03T13:14:59.404Z",
+        "url": "/test",
         "method": "GET",
-        "message": "Repeated attacker behavior",
-        "request": {
-          "method": "GET",
-          "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
-          "referer": "http://localhost:5173/",
-          "headers": {
-            "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/147.0.0.0 Safari/537.36",
-            "accept-language": "en-US,en;q=0.9"
-          },
-          "query": {},
-          "body": null
-        }
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:14:59.435Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:14:59.464Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:14:59.495Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:14:59.523Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:14:59.552Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:14:59.584Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:14:59.615Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:18.745Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:19.290Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:19.320Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:19.348Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:19.377Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:19.406Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:19.435Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:19.466Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:19.496Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:19.522Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:48.246Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:48.893Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:48.921Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:48.950Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:48.978Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:49.006Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:49.033Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:49.060Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:49.087Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      },
+      {
+        "attemptTime": "2026-05-03T13:21:49.114Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
       }
     ]
   }
