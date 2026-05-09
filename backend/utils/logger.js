@@ -1,3 +1,4 @@
+//Logger.js 
 const fs = require("fs/promises");
 const path = require("path");
 
@@ -85,8 +86,20 @@ module.exports = async (req, type, detectionStartTime) => {
 
   // 🔥 Rate Limit logic (same as your version)
   if (type === "Rate Limit") {
+    const SESSION_WINDOW = 10000; // 10 sec
+    const COOLDOWN = 2 * 60 * 1000; // 2 min
+
     const existingLog = logs.find((log) => {
-      return log.type === "Rate Limit" && log.ip === ip;
+      if (log.type !== "Rate Limit" || log.ip !== ip) return false;
+
+      const lastTime = new Date(log.lastTriggered).getTime();
+      const timeDiff = Date.now() - lastTime;
+
+      //OLD attack → DO NOT reuse
+      if (timeDiff > COOLDOWN) return false;
+
+      //SAME session → reuse
+      return timeDiff < SESSION_WINDOW;
     });
 
     if (existingLog) {
@@ -110,20 +123,34 @@ module.exports = async (req, type, detectionStartTime) => {
         request: getRequestMeta(req)
       });
 
-      existingLog.history.push({
-        attemptTime: currentTime,
-        url,
-        method,
-        payload: getPayload(req),
-        fingerprint: getFingerprint(ip, userAgent, type)
-      });
+      // Only push to history AFTER first attack already exists
+      if (existingLog.count > 1) {
+           const lastHistory = existingLog.history[existingLog.history.length - 1];
+
+        // Only add new history if last one was >10 sec ago
+        if (
+          !lastHistory ||
+          Date.now() - new Date(lastHistory.attemptTime).getTime() > 10000
+        ) {
+          existingLog.history.push({
+            attemptTime: currentTime,
+            url,
+            method,
+            payload: getPayload(req),
+            fingerprint: getFingerprint(ip, userAgent, type)
+          });
+        }
+      }
 
       await safeWrite(logFile, logs);
       return;
     }
 
     const newRateLimitLog = {
+      sessionId: `sess_${ip}_${Date.now()}`,
       time: currentTime,
+      sessionStart: currentTime,
+      
       ip,
       ipStatus: "Normal",
       geo,
@@ -137,7 +164,7 @@ module.exports = async (req, type, detectionStartTime) => {
       sourceType: getSourceType(userAgent),
       fingerprint: getFingerprint(ip, userAgent, type),
       riskScore: getRiskScore(type),
-
+      falsePositive: req.falsePositive || false,
       count: 1,
       lastTriggered: currentTime,
       status: "Active",
@@ -192,7 +219,7 @@ module.exports = async (req, type, detectionStartTime) => {
     lastTriggered: currentTime,
     attackStage: "Detected → Blocked",
     status: "Active",
-
+    falsePositive: req.falsePositive || false,
     request: {
       method: req.method,
       userAgent,

@@ -6,7 +6,8 @@ const COLORS = {
   Rate: "#1890ff",
   LFI: "#722ed1",
   CMD: "#eb2f96",
-  DIR: "#13c2c2"
+  DIR: "#13c2c2",
+  Other: "#63615f"
 };
 
 export default function AttackChart({ stats }) {
@@ -16,7 +17,8 @@ export default function AttackChart({ stats }) {
     { name: "Rate", value: stats.rate || 0 },
     { name: "LFI", value: stats.lfi || 0 },
     { name: "CMD", value: stats.cmd || 0 },
-    { name: "DIR", value: stats.dir || 0 }
+    { name: "DIR", value: stats.dir || 0 },
+    { name: "Other", value: stats.Other || 0 }
   ];
 
   const option = {
@@ -78,12 +80,14 @@ export default function AttackChart({ stats }) {
   };
 
   return (
-    <div className="bg-white p-5 rounded-2xl shadow-md">
-      <h2 className="text-lg font-semibold mb-4">
-        📊 Attack Distribution
-      </h2>
+    <div className="chart-wrapper">
+      <h2>Attack Distribution</h2>
 
-      <ReactECharts option={option} style={{ height: 400 }} />
+      <ReactECharts
+        option={option}
+        style={{ height: 350, width: "100%" }}
+        opts={{ renderer: "canvas" }}
+      />
     </div>
   );
 }

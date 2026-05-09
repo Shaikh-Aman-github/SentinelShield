@@ -1,25 +1,39 @@
+//detector.js
 const logger = require("../utils/logger");
 const alertLogger = require("../utils/alertLogger");
 
+//Helper: detect likely false positives
+const isLikelyFalsePositive = (req, type) => {
+  const url = req.originalUrl.toLowerCase();
+
+  // Example: search queries with ' (common legit use)
+  if (type === "SQL Injection") {
+    if (url.includes("search") && url.includes("'")) {
+      return true;
+    }
+  }
+
+  return false;
+};
+
+
 module.exports = async (req, res, next) => {
-  // ✅ Ignore frontend & internal calls
+  //Ignore frontend & internal calls
   if (
+    req.method === "GET" && (
     req.url.startsWith("/logs") ||
     req.url.startsWith("/stats") ||
     req.url.startsWith("/alerts") ||
     req.url.startsWith("/favicon") ||
     req.url.includes(".js") ||
-    req.url.includes(".css")
-    // || req.headers["user-agent"]?.includes("Mozilla")
+    req.url.includes(".css"))
   ) {
     return next();
   }
 
   const startTime = Date.now();
 
-  const ip =
-    req.headers["x-forwarded-for"]?.split(",")[0].trim() || req.ip;
-
+  const ip = req.headers["x-forwarded-for"]?.split(",")[0].trim() || req.ip;
   const userAgent = (req.headers["user-agent"] || "").toLowerCase();
 
   const requestData = `
@@ -31,6 +45,7 @@ module.exports = async (req, res, next) => {
   `.toLowerCase();
 
   let attackType = null;
+  let isFalsePositive = false;
 
   // SQL Injection
   const sqlPatterns = [
@@ -75,29 +90,35 @@ module.exports = async (req, res, next) => {
 
   if (suspiciousHeaderPatterns.some((p) => p.test(userAgent))) {
     attackType = "Suspicious Header Activity";
+  } else if (dirTraversalPatterns.some((p) => p.test(requestData))) {
+    attackType = "Directory Traversal";
   } else if (sqlPatterns.some((p) => p.test(requestData))) {
     attackType = "SQL Injection";
+    isFalsePositive = isLikelyFalsePositive(req, attackType); //Detect false positive
   } else if (xssPatterns.some((p) => p.test(requestData))) {
     attackType = "XSS";
   } else if (lfiPatterns.some((p) => p.test(requestData))) {
     attackType = "LFI";
   } else if (cmdPatterns.some((p) => p.test(requestData))) {
     attackType = "Command Injection";
-  } else if (dirTraversalPatterns.some((p) => p.test(requestData))) {
-    attackType = "Directory Traversal";
   }
 
   if (attackType) {
+    req.falsePositive = isFalsePositive;  // Attach flag to request (used in logger)
     await logger(req, attackType, startTime);
     await alertLogger(req, attackType);
 
-    console.log(`🚨 ALERT: ${attackType} detected from ${ip}`);
+    console.log(
+      `ALERT: ${attackType} detected from ${ip}` +
+      (isFalsePositive ? " (Possible False Positive)" : "")
+    );
 
     return res.status(403).json({
       message: `${attackType} Detected`,
       status: "BLOCKED",
       alert: true,
-      type: attackType
+      type: attackType,
+      falsePositive: isFalsePositive
     });
   }
 

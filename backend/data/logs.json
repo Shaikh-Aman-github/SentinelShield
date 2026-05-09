@@ -1,1 +1,1398 @@
-[]
+[
+  {
+    "requestId": "req_1778344329526",
+    "time": "2026-05-09T16:32:09.526Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Directory Traversal",
+    "pattern": "Directory Traversal via request",
+    "payload": "{\"path\":\"../../etc/passwd\"}",
+    "url": "/test?path=../../etc/passwd",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_DirectoryTraversal",
+    "severity": "MEDIUM",
+    "riskScore": 5,
+    "detectionTimeMs": 2,
+    "responseTimeMs": 2,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:32:09.526Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "path": "../../etc/passwd"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344483336",
+    "time": "2026-05-09T16:34:43.336Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Directory Traversal",
+    "pattern": "Directory Traversal via request",
+    "payload": "{\"path\":\"../../etc/passwd\"}",
+    "url": "/test?path=../../etc/passwd",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_DirectoryTraversal",
+    "severity": "MEDIUM",
+    "riskScore": 5,
+    "detectionTimeMs": 2,
+    "responseTimeMs": 2,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:34:43.336Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "path": "../../etc/passwd"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344606548",
+    "time": "2026-05-09T16:36:46.548Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "SQL Injection",
+    "pattern": "SQL Injection via request",
+    "payload": "{\"user\":\"admin' OR 1=1--\"}",
+    "url": "/login?user=admin%27%20OR%201=1--",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_SQLInjection",
+    "severity": "CRITICAL",
+    "riskScore": 9,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:36:46.548Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "user": "admin' OR 1=1--"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344632649",
+    "time": "2026-05-09T16:37:12.649Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "XSS",
+    "pattern": "XSS via request",
+    "payload": "{\"q\":\"<script>alert(1)</script>\"}",
+    "url": "/?q=<script>alert(1)</script>",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_XSS",
+    "severity": "HIGH",
+    "riskScore": 7,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:37:12.649Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "q": "<script>alert(1)</script>"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344640588",
+    "time": "2026-05-09T16:37:20.588Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "LFI",
+    "pattern": "LFI via request",
+    "payload": "{\"file\":\"/etc/passwd\"}",
+    "url": "/?file=/etc/passwd",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_LFI",
+    "severity": "HIGH",
+    "riskScore": 6,
+    "detectionTimeMs": 2,
+    "responseTimeMs": 2,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:37:20.588Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "file": "/etc/passwd"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344647452",
+    "time": "2026-05-09T16:37:27.452Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Directory Traversal",
+    "pattern": "Directory Traversal via request",
+    "payload": "{\"path\":\"../../secret\"}",
+    "url": "/?path=../../secret",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_DirectoryTraversal",
+    "severity": "MEDIUM",
+    "riskScore": 5,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:37:27.452Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "path": "../../secret"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344659143",
+    "time": "2026-05-09T16:37:39.143Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Command Injection",
+    "pattern": "Command Injection via request",
+    "payload": "{\"cmd\":\"test;ls\"}",
+    "url": "/?cmd=test;ls",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_CommandInjection",
+    "severity": "CRITICAL",
+    "riskScore": 10,
+    "detectionTimeMs": 2,
+    "responseTimeMs": 2,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:37:39.143Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "cmd": "test;ls"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "sessionId": "sess_::1_1778344667466",
+    "time": "2026-05-09T16:37:47.466Z",
+    "sessionStart": "2026-05-09T16:37:47.466Z",
+    "ip": "::1",
+    "ipStatus": "Suspicious",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Rate Limit",
+    "severity": "LOW",
+    "url": "/test",
+    "payload": "N/A",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_RateLimit",
+    "riskScore": 3,
+    "falsePositive": false,
+    "count": 10,
+    "lastTriggered": "2026-05-09T16:37:49.248Z",
+    "status": "Active",
+    "details": [
+      {
+        "time": "2026-05-09T16:37:47.466Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:37:49.011Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:37:49.044Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:37:49.076Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:37:49.109Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:37:49.137Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:37:49.165Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:37:49.193Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:37:49.221Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:37:49.248Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      }
+    ],
+    "history": [
+      {
+        "attemptTime": "2026-05-09T16:37:49.011Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      }
+    ]
+  },
+  {
+    "requestId": "req_1778344676588",
+    "time": "2026-05-09T16:37:56.588Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Suspicious Header Activity",
+    "pattern": "Suspicious Header Activity via request",
+    "payload": "N/A",
+    "url": "/test",
+    "sourceType": "Attack Tool",
+    "fingerprint": "::1_sqlmap_SuspiciousHeaderActivity",
+    "severity": "UNKNOWN",
+    "riskScore": 1,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:37:56.588Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "sqlmap",
+      "headers": {
+        "host": "localhost:3000",
+        "accept": "*/*",
+        "user-agent": "sqlmap"
+      },
+      "query": {},
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "sqlmap"
+  },
+  {
+    "requestId": "req_1778344691772",
+    "time": "2026-05-09T16:38:11.772Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "XSS",
+    "pattern": "XSS via request",
+    "payload": "{\"comment\":\"<script>alert(1)</script>\"}",
+    "url": "/test",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_XSS",
+    "severity": "HIGH",
+    "riskScore": 7,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:38:11.772Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "POST",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*",
+        "content-type": "application/json",
+        "content-length": "39"
+      },
+      "query": {},
+      "body": {
+        "comment": "<script>alert(1)</script>"
+      }
+    },
+    "method": "POST",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344701288",
+    "time": "2026-05-09T16:38:21.288Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "XSS",
+    "pattern": "XSS via request",
+    "payload": "{\"comment\":\"<script>alert(1)</script>\"}",
+    "url": "/test",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_XSS",
+    "severity": "HIGH",
+    "riskScore": 7,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:38:21.288Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "POST",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*",
+        "content-type": "application/json",
+        "content-length": "39"
+      },
+      "query": {},
+      "body": {
+        "comment": "<script>alert(1)</script>"
+      }
+    },
+    "method": "POST",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344706392",
+    "time": "2026-05-09T16:38:26.392Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "SQL Injection",
+    "pattern": "SQL Injection via request",
+    "payload": "{\"username\":\"admin' OR 1=1--\"}",
+    "url": "/test",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_SQLInjection",
+    "severity": "CRITICAL",
+    "riskScore": 9,
+    "detectionTimeMs": 2,
+    "responseTimeMs": 2,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:38:26.392Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "POST",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*",
+        "content-type": "application/json",
+        "content-length": "30"
+      },
+      "query": {},
+      "body": {
+        "username": "admin' OR 1=1--"
+      }
+    },
+    "method": "POST",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344868299",
+    "time": "2026-05-09T16:41:08.299Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "SQL Injection",
+    "pattern": "SQL Injection via request",
+    "payload": "{\"user\":\"admin' OR 1=1--\"}",
+    "url": "/test?user=admin%27%20OR%201=1--",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_SQLInjection",
+    "severity": "CRITICAL",
+    "riskScore": 9,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:41:08.299Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "user": "admin' OR 1=1--"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344884174",
+    "time": "2026-05-09T16:41:24.174Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "XSS",
+    "pattern": "XSS via request",
+    "payload": "{\"q\":\"<script>alert(1)</script>\"}",
+    "url": "/test?q=<script>alert(1)</script>",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_XSS",
+    "severity": "HIGH",
+    "riskScore": 7,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:41:24.174Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "q": "<script>alert(1)</script>"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344897895",
+    "time": "2026-05-09T16:41:37.895Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "LFI",
+    "pattern": "LFI via request",
+    "payload": "{\"file\":\"/etc/passwd\"}",
+    "url": "/test?file=/etc/passwd",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_LFI",
+    "severity": "HIGH",
+    "riskScore": 6,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:41:37.895Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "file": "/etc/passwd"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344913921",
+    "time": "2026-05-09T16:41:53.921Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "LFI",
+    "pattern": "LFI via request",
+    "payload": "{\"file\":\"/etc/passwd\"}",
+    "url": "/test?file=/etc/passwd",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_LFI",
+    "severity": "HIGH",
+    "riskScore": 6,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:41:53.921Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "file": "/etc/passwd"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344922679",
+    "time": "2026-05-09T16:42:02.679Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "LFI",
+    "pattern": "LFI via request",
+    "payload": "{\"file\":\"/etc/passwd\"}",
+    "url": "/test?file=/etc/passwd",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_LFI",
+    "severity": "HIGH",
+    "riskScore": 6,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:42:02.679Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "file": "/etc/passwd"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344940440",
+    "time": "2026-05-09T16:42:20.440Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Directory Traversal",
+    "pattern": "Directory Traversal via request",
+    "payload": "{\"path\":\"../../etc/passwd\"}",
+    "url": "/test?path=../../etc/passwd",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_DirectoryTraversal",
+    "severity": "MEDIUM",
+    "riskScore": 5,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:42:20.440Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "path": "../../etc/passwd"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778344953545",
+    "time": "2026-05-09T16:42:33.545Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Command Injection",
+    "pattern": "Command Injection via request",
+    "payload": "{\"cmd\":\"test;ls\"}",
+    "url": "/test?cmd=test;ls",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_CommandInjection",
+    "severity": "CRITICAL",
+    "riskScore": 10,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:42:33.545Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "cmd": "test;ls"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "sessionId": "sess_::1_1778344970714",
+    "time": "2026-05-09T16:42:50.714Z",
+    "sessionStart": "2026-05-09T16:42:50.714Z",
+    "ip": "::1",
+    "ipStatus": "Suspicious",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Rate Limit",
+    "severity": "LOW",
+    "url": "/test",
+    "payload": "N/A",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_RateLimit",
+    "riskScore": 3,
+    "falsePositive": false,
+    "count": 10,
+    "lastTriggered": "2026-05-09T16:42:51.350Z",
+    "status": "Active",
+    "details": [
+      {
+        "time": "2026-05-09T16:42:50.714Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:42:51.116Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:42:51.151Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:42:51.180Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:42:51.209Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:42:51.239Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:42:51.267Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:42:51.296Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:42:51.324Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-09T16:42:51.350Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      }
+    ],
+    "history": [
+      {
+        "attemptTime": "2026-05-09T16:42:51.116Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      }
+    ]
+  },
+  {
+    "requestId": "req_1778344997105",
+    "time": "2026-05-09T16:43:17.105Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Suspicious Header Activity",
+    "pattern": "Suspicious Header Activity via request",
+    "payload": "N/A",
+    "url": "/test",
+    "sourceType": "Attack Tool",
+    "fingerprint": "::1_sqlmap_SuspiciousHeaderActivity",
+    "severity": "UNKNOWN",
+    "riskScore": 1,
+    "detectionTimeMs": 2,
+    "responseTimeMs": 2,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:43:17.105Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "sqlmap",
+      "headers": {
+        "host": "localhost:3000",
+        "accept": "*/*",
+        "user-agent": "sqlmap"
+      },
+      "query": {},
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "sqlmap"
+  },
+  {
+    "requestId": "req_1778345034757",
+    "time": "2026-05-09T16:43:54.757Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "SQL Injection",
+    "pattern": "SQL Injection via request",
+    "payload": "{\"username\":\"admin' OR 1=1--\"}",
+    "url": "/test",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_SQLInjection",
+    "severity": "CRITICAL",
+    "riskScore": 9,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:43:54.757Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "POST",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*",
+        "content-type": "application/json",
+        "content-length": "30"
+      },
+      "query": {},
+      "body": {
+        "username": "admin' OR 1=1--"
+      }
+    },
+    "method": "POST",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778345109545",
+    "time": "2026-05-09T16:45:09.545Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "XSS",
+    "pattern": "XSS via request",
+    "payload": "{\"comment\":\"<script>alert(1)</script>\"}",
+    "url": "/test",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_XSS",
+    "severity": "HIGH",
+    "riskScore": 7,
+    "detectionTimeMs": 2,
+    "responseTimeMs": 2,
+    "count": 1,
+    "lastTriggered": "2026-05-09T16:45:09.545Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "POST",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*",
+        "content-type": "application/json",
+        "content-length": "39"
+      },
+      "query": {},
+      "body": {
+        "comment": "<script>alert(1)</script>"
+      }
+    },
+    "method": "POST",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778346748112",
+    "time": "2026-05-09T17:12:28.112Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Command Injection",
+    "pattern": "Command Injection via request",
+    "payload": "{\"cmd\":\"test;ls\"}",
+    "url": "/test?cmd=test;ls",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_CommandInjection",
+    "severity": "CRITICAL",
+    "riskScore": 10,
+    "detectionTimeMs": 2,
+    "responseTimeMs": 2,
+    "count": 1,
+    "lastTriggered": "2026-05-09T17:12:28.112Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "cmd": "test;ls"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778346873398",
+    "time": "2026-05-09T17:14:33.398Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Command Injection",
+    "pattern": "Command Injection via request",
+    "payload": "{\"cmd\":\"test;ls\"}",
+    "url": "/test?cmd=test;ls",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_CommandInjection",
+    "severity": "CRITICAL",
+    "riskScore": 10,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T17:14:33.398Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "cmd": "test;ls"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  },
+  {
+    "requestId": "req_1778346879848",
+    "time": "2026-05-09T17:14:39.848Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Command Injection",
+    "pattern": "Command Injection via request",
+    "payload": "{\"cmd\":\"test;ls\"}",
+    "url": "/test?cmd=test;ls",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_CommandInjection",
+    "severity": "CRITICAL",
+    "riskScore": 10,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-09T17:14:39.848Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "cmd": "test;ls"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
+  }
+]

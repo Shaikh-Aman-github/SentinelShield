@@ -1,4 +1,4 @@
-// middleware/rateLimiter.js
+//rateLimiter.js
 const logger = require("../utils/logger");
 const alertLogger = require("../utils/alertLogger");
 

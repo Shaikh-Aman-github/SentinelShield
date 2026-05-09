@@ -1,3 +1,4 @@
+//fileLock.js
 const fs = require("fs/promises");
 
 let writing = false;

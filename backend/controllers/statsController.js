@@ -1,3 +1,4 @@
+//statsController.js
 const fs = require("fs");
 const path = require("path");
 
@@ -21,6 +22,13 @@ exports.getStats = (req, res) => {
     cmd: logs.filter(l => l.type === "Command Injection").length,
     dir: logs.filter(l => l.type === "Directory Traversal").length,
     rate: logs.filter(l => l.type === "Rate Limit").length,
+    Other: logs.filter(l => l.type === "Suspicious Header Activity").length
+  };
+
+  const statusCount = {
+    Normal: 0,
+    Suspicious: 0,
+    Malicious: 0
   };
 
   // 🔥 Top attacker IPs
@@ -28,6 +36,12 @@ exports.getStats = (req, res) => {
 
   logs.forEach(log => {
     ipMap[log.ip] = (ipMap[log.ip] || 0) + 1;
+
+    if (log.reputation) {
+      statusCount[log.reputation.level]++;
+    } else {
+      statusCount["Normal"]++;
+    }
   });
 
   const topIPs = Object.entries(ipMap)
@@ -41,6 +55,7 @@ exports.getStats = (req, res) => {
   res.json({
     ...stats,
     topIPs,
-    recent
+    recent,
+    statusCount
   });
 };

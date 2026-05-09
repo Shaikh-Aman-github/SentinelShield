@@ -1,14 +1,20 @@
 import { useEffect, useState } from "react";
 import { io } from "socket.io-client";
 
-import { getStats, getLogs } from "../services/api";
-import { getAlerts, markAlertAsSent, getAlertHistory } from "../services/api";
+import {
+  getStats,
+  getLogs,
+  getAlerts,
+  markAlertAsSent,
+  getAlertHistory
+} from "../services/api";
 
 import StatsCard from "./StatsCard";
 import LogsTable from "./LogsTable";
 import AttackChart from "./AttackChart";
+import GeoPieChart from "./GeoChart";
 import ToastAlert from "./ToastAlert";
-import AlertHistory from "./AlertHistory";
+import ThreatInsights from "./ThreatInsights";
 
 export default function Dashboard() {
   const [stats, setStats] = useState({});
@@ -17,14 +23,9 @@ export default function Dashboard() {
 
   const [toastAlert, setToastAlert] = useState(null);
   const [lastShownAlertTime, setLastShownAlertTime] = useState(null);
-  
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   const loadData = async () => {
     try {
-      setLoading(true);
-   
       const statsRes = await getStats();
       const logsRes = await getLogs();
       const alertsRes = await getAlerts();
@@ -41,28 +42,23 @@ export default function Dashboard() {
 
           await markAlertAsSent(latest.id);
 
-          setTimeout(() => {
-            setToastAlert(null);
-          }, 3000);
+          setTimeout(() => setToastAlert(null), 3000);
         }
       }
 
       setAlerts(historyRes.data);
       setStats(statsRes.data);
       setLogs(logsRes.data);
-
-    setError(null);
     } catch (err) {
-      setError("Failed to load dashboard data");
-    } finally {
-      setLoading(false);
-   }
+      console.error(err);
+    }
   };
 
   useEffect(() => {
     loadData();
 
-    const socket = io("http://localhost:3000");
+    // const socket = io("http://localhost:3000");
+    const socket = io(import.meta.env.VITE_API_URL || "http://192.168.31.203:3000");
 
     const typeMap = {
       "sql injection": "sql",
@@ -70,7 +66,8 @@ export default function Dashboard() {
       "lfi": "lfi",
       "command injection": "cmd",
       "directory traversal": "dir",
-      "rate limit": "rate"
+      "rate limit": "rate",
+      "suspicious header activity": "Other"
     };
 
     socket.on("newAttack", (attack) => {
@@ -95,64 +92,107 @@ export default function Dashboard() {
     return () => socket.disconnect();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
-  if (error) return <p>{error}</p>;
-  
   return (
-    <div style={{ padding: "20px" }}>
-    
-    <div className="p-6">
-      <ToastAlert
-        alert={toastAlert}
-        onClose={() => setToastAlert(null)}
-      />
+    <div className="dashboard-container">
+      <ToastAlert alert={toastAlert} onClose={() => setToastAlert(null)} />
 
-      <h1 className="text-2xl font-bold">🛡️ SentinelShield Dashboard</h1>
+      <h1 className="dashboard-title">SentinelShield: Advanced Intrusion Detection & Web Protection System</h1>
 
-      {/* <AlertHistory alerts={alerts} /> */}
-    </div>
-
-
-      <div style={{ display: "flex", gap: "20px" }}>
+      {/* STATS */}
+      <div className="stats-grid">
         <StatsCard title="Total" value={stats.total || 0} />
         <StatsCard title="SQLi" value={stats.sql || 0} />
         <StatsCard title="XSS" value={stats.xss || 0} />
         <StatsCard title="LFI" value={stats.lfi || 0} />
         <StatsCard title="CMD" value={stats.cmd || 0} />
         <StatsCard title="DIR" value={stats.dir || 0} />
-        <StatsCard title="Rate Limit" value={stats.rate || 0} />
+        <StatsCard title="Rate" value={stats.rate || 0} />
+        <StatsCard title="Other" value={stats.Other || 0} />
       </div>
 
-      <AttackChart stats={stats} />
+      {/* CHART */}
+      <div className="card full">
+        <AttackChart stats={stats} />
+      </div>
 
-      <h2>🔥 Top Attacker IPs</h2>
-      <ul>
-        {stats.topIPs?.length > 0 ? (
-          stats.topIPs.map((ipData, i) => (
-            <li key={i}>
-              {ipData.ip === "::1" ? "Localhost" : ipData.ip} → {ipData.count} attacks
-            </li>
-          ))
-        ) : (
-          <li>No data</li>
-        )}
-      </ul>
+      <div className="card full">
+        <GeoPieChart logs={logs} />
+      </div>
 
-      <h2>🕒 Recent Activity</h2>
-      <ul>
-        {stats.recent?.length > 0 ? (
-          stats.recent.map((log, i) => (
-            <li key={i}>
-              {log.type} from {log.ip}
-            </li>
-          ))
-        ) : (
-          <li>No recent activity</li>
-        )}
-      </ul> 
+       {/* LOGS */}
+      <div className="card full">
+        <h2>Logs</h2>
+        <LogsTable logs={logs} />
+      </div>
 
-      <h2>📜 Logs</h2>
-      <LogsTable logs={logs} />
+
+      {/* ROW */}
+      <div className="grid-2">
+        <div className="card">
+          <ThreatInsights stats={stats} />
+        </div>
+
+        <div className="card">
+          <h2>Analysis Summary</h2>
+          <p>Total Attacks: <b>{stats.total}</b></p>
+
+          <p>
+            Most Frequent:
+            <b>
+              {
+                (() => {
+                  const attacks = {
+                    SQL: stats.sql,
+                    XSS: stats.xss,
+                    Rate: stats.rate,
+                    LFI: stats.lfi,
+                    CMD: stats.cmd,
+                    DIR: stats.dir
+                  };
+
+                  const filtered = Object.entries(attacks).filter(
+                    ([, value]) => value > 0
+                  );
+
+                  if (filtered.length === 0) return " None";
+
+                  return filtered.sort((a, b) => b[1] - a[1])[0][0];
+                })()
+              }
+            </b>
+          </p>
+        </div>
+      </div>
+
+      {/* SECOND ROW */}
+      <div className="grid-2">
+        <div className="card">
+          <h2>Top Attacker IPs</h2>
+          {stats.topIPs?.map((ip, i) => (
+            <p key={i}>
+              {ip.ip === "::1" ? "Localhost" : ip.ip} → {ip.count}
+            </p>
+          ))}
+        </div>
+
+        <div className="card">
+          <h2>Recent Activity</h2>
+          {stats.recent?.map((r, i) => (
+            <p key={i}>{r.type} from {r.ip}</p>
+          ))}
+        </div>
+      </div>
+
+      {/* SECURITY */}
+      <div className="security-box">
+        <h2>🧾 Security Analysis</h2>
+        <ul>
+          <li>SQL Injection patterns detected (OR 1=1)</li>
+          <li>Rate limiting → brute-force behavior</li>
+          <li>Repeated IP activity detected</li>
+          <li>Possible false positives</li>
+        </ul>
+      </div>
     </div>
   );
 }

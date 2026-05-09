@@ -1,3 +1,4 @@
+//logModel.js
 const fs = require("fs");
 
 exports.readLogs = () => {
