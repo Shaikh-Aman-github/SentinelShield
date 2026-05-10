@@ -28,10 +28,8 @@ export default function Dashboard() {
     try {
       const statsRes = await getStats();
       const logsRes = await getLogs();
-      const alertsRes = await getAlerts();
       const historyRes = await getAlertHistory();
-
-      const latestAlerts = alertsRes.data;
+      const latestAlerts = historyRes.data;
 
       if (latestAlerts.length > 0) {
         const latest = latestAlerts[0];
