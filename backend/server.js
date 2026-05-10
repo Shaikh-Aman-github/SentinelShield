@@ -24,7 +24,8 @@ app.use(express.urlencoded({ extended: true }));
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "*"
+    origin: "*",
+    origin: "https://your-project.vercel.app"
   }
 });
 // make io globally
@@ -52,11 +53,11 @@ app.get("/", (req, res) => res.send("SentinelShield Running"));
 app.get("/test", (req, res) => res.send("Test route working"));
 
 //frontend calling
-app.use(express.static(path.join(__dirname, "../frontend/dist")));
+// app.use(express.static(path.join(__dirname, "../frontend/dist")));
 
-app.use((req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-});
+// app.use((req, res) => {
+//   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
+// });
 
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

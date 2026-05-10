@@ -57,8 +57,8 @@ export default function Dashboard() {
   useEffect(() => {
     loadData();
 
-    // const socket = io("http://localhost:3000");
-    const socket = io(import.meta.env.VITE_API_URL || "http://192.168.31.203:3000");
+    const socket = io("https://sentinelshield-adxf.onrender.com");
+    // const socket = io(import.meta.env.VITE_API_URL || "http://192.168.31.203:3000");
 
     const typeMap = {
       "sql injection": "sql",
