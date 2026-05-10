@@ -134,6 +134,7 @@ export default function Dashboard() {
 
         <div className="card">
           <h2>Analysis Summary</h2>
+          <hr style={{ border: "1px dashed #475569", margin: "20px 0" }}/>
           <p>Total Attacks: <b>{stats.total}</b></p>
 
           <p>
@@ -168,6 +169,7 @@ export default function Dashboard() {
       <div className="grid-2">
         <div className="card">
           <h2>Top Attacker IPs</h2>
+          <hr style={{ border: "1px dashed #475569", margin: "20px 0" }}/>
           {stats.topIPs?.map((ip, i) => (
             <p key={i}>
               {ip.ip === "::1" ? "Localhost" : ip.ip} → {ip.count}
@@ -177,6 +179,7 @@ export default function Dashboard() {
 
         <div className="card">
           <h2>Recent Activity</h2>
+          <hr style={{ border: "1px dashed #475569", margin: "20px 0" }}/>
           {stats.recent?.map((r, i) => (
             <p key={i}>{r.type} from {r.ip}</p>
           ))}
@@ -186,6 +189,7 @@ export default function Dashboard() {
       {/* SECURITY */}
       <div className="security-box">
         <h2>🧾 Security Analysis</h2>
+        <hr style={{ border: "1px dashed #475569", margin: "20px 0" }}/>
         <ul>
           <li>SQL Injection patterns detected (OR 1=1)</li>
           <li>Rate limiting → brute-force behavior</li>

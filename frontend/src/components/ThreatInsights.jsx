@@ -15,7 +15,7 @@ export default function ThreatInsights({ stats }) {
   return (
     <div>
       <h2>Threat Insights</h2>
-
+      <hr style={{ border: "1px dashed #475569", margin: "20px 0" }}/>
       <p><strong>Threat Level:</strong> {threatLevel}</p>
 
       {rate > 0 && (
