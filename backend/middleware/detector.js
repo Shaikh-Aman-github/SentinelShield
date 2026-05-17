@@ -71,7 +71,7 @@ module.exports = async (req, res, next) => {
 
   //Command Injection
   const cmdPatterns = [
-    /(;|\||&&)\s*(ls|whoami|cat|pwd)/i
+    /(;|\||&&)\s*(ls|whoami|cat|pwd)/i,/(ls|whoami|cat|pwd)\s*(;|\||&&)/i
   ];
 
   // Directory Traversal
