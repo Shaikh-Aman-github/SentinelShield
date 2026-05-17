@@ -29,8 +29,8 @@ module.exports = async (req, res, next) => {
   const currentTime = Date.now();
 
   //route-based limits
-  let WINDOW_SIZE = 30 * 1000;
-  let MAX_REQUESTS = 5;
+  let WINDOW_SIZE = 10 * 1000;
+  let MAX_REQUESTS = 20;
 
   if (req.url.includes("/login")) {
     MAX_REQUESTS = 5;

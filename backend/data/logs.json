@@ -1,1 +1,205 @@
-[]
+[
+  {
+    "sessionId": "sess_::1_1779039309543",
+    "time": "2026-05-17T17:35:09.543Z",
+    "sessionStart": "2026-05-17T17:35:09.543Z",
+    "ip": "::1",
+    "ipStatus": "Suspicious",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "Rate Limit",
+    "severity": "LOW",
+    "url": "/test",
+    "payload": "N/A",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_RateLimit",
+    "riskScore": 3,
+    "falsePositive": false,
+    "count": 10,
+    "lastTriggered": "2026-05-17T17:35:10.200Z",
+    "status": "Active",
+    "details": [
+      {
+        "time": "2026-05-17T17:35:09.543Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-17T17:35:09.968Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-17T17:35:09.997Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-17T17:35:10.026Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-17T17:35:10.056Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-17T17:35:10.086Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-17T17:35:10.114Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-17T17:35:10.143Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-17T17:35:10.172Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      },
+      {
+        "time": "2026-05-17T17:35:10.200Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "riskScore": 3,
+        "request": {
+          "method": "GET",
+          "userAgent": "curl/8.18.0",
+          "referer": "unknown",
+          "headers": {
+            "user-agent": "curl/8.18.0"
+          },
+          "query": {},
+          "body": null
+        }
+      }
+    ],
+    "history": [
+      {
+        "attemptTime": "2026-05-17T17:35:09.968Z",
+        "url": "/test",
+        "method": "GET",
+        "payload": "N/A",
+        "fingerprint": "::1_curl_RateLimit"
+      }
+    ]
+  }
+]

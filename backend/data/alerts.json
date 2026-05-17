@@ -1,1 +1,16 @@
-[]
+[
+  {
+    "requestId": "req_1779039309934",
+    "time": "2026-05-17T17:35:09.934Z",
+    "ip": "::1",
+    "type": "Rate Limit",
+    "url": "/test",
+    "severity": "LOW",
+    "count": 1,
+    "lastTriggered": "2026-05-17T17:35:09.551Z",
+    "method": "GET",
+    "userAgent": "curl/8.18.0",
+    "markAsRead": "No",
+    "sendToAdmin": "Yes"
+  }
+]
