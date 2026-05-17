@@ -191,7 +191,7 @@ GET /alerts/history
 
 ---
 
-# 🔐 Security Middleware
+# Security Middleware
 
 The backend uses custom middleware to detect suspicious request patterns.
 
@@ -236,13 +236,6 @@ The alert popup displays:
 
 The `.env` file is NOT uploaded to GitHub
 VITE_API_URL_Dev=http://localhost:3000
----
-
-# Flow Diagram
-
-```markdown
-![Flow Diagram](./Flow-Diagram.png)
-```
 ---
 
 # Sample Attack Payloads
