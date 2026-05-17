@@ -20,13 +20,14 @@ const isLikelyFalsePositive = (req, type) => {
 module.exports = async (req, res, next) => {
   //Ignore frontend & internal calls
   if (
-    req.method === "GET" && (
-    req.url.startsWith("/logs") ||
-    req.url.startsWith("/stats") ||
-    req.url.startsWith("/alerts") ||
-    req.url.startsWith("/favicon") ||
-    req.url.includes(".js") ||
-    req.url.includes(".css"))
+    req.method === "GET" &&
+    (
+      req.url.startsWith("/logs") ||
+      req.url.startsWith("/stats") ||
+      req.url.startsWith("/alerts") ||
+      req.url.startsWith("/favicon") ||
+      /\.(js|css|png|jpg|jpeg|svg|ico|map)$/i.test(req.url)
+    )
   ) {
     return next();
   }

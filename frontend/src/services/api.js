@@ -5,7 +5,10 @@ const URL = import.meta.env.VITE_API_URL || "https://sentinelshield-adxf.onrende
 //const URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const API = axios.create({
-  baseURL: URL
+  baseURL: URL,
+  headers: {
+  "x-dashboard-key": "sentinelshield123"
+}
 });
 
 // use API instance

@@ -44,10 +44,23 @@ io.on("connection", (socket) => {
 app.use(detector);
 app.use(rateLimiter);
 
+
+const protectDashboard = (req, res, next) => {
+  const key = req.headers["x-dashboard-key"];
+  const Skey = process.env.Skey || "sentinelshield123";
+  if (key !== Skey) {
+    return res.status(403).json({
+      message: "Unauthorized"
+    });
+  }
+
+  next();
+};
+
 // API routes (protected)
-app.use("/logs", logRoutes);
-app.use("/stats", statsRoutes);
-app.use("/alerts", alertRoutes);
+app.use("/logs", protectDashboard, logRoutes);
+app.use("/stats", protectDashboard, statsRoutes);
+app.use("/alerts", protectDashboard, alertRoutes);
 
 // test routes
 app.get("/", (req, res) => res.send("SentinelShield Running"));
