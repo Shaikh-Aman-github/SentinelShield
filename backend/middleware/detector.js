@@ -69,7 +69,7 @@ module.exports = async (req, res, next) => {
     /windows\/system32/i
   ];
 
-  // ✅ FIXED Command Injection (NO false positives)
+  //Command Injection
   const cmdPatterns = [
     /(;|\||&&)\s*(ls|whoami|cat|pwd)/i
   ];
@@ -104,7 +104,7 @@ module.exports = async (req, res, next) => {
   }
 
   if (attackType) {
-    req.falsePositive = isFalsePositive;  // Attach flag to request (used in logger)
+    req.falsePositive = isFalsePositive;  // Attach flag to request
     await logger(req, attackType, startTime);
     await alertLogger(req, attackType);
 

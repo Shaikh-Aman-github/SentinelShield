@@ -31,7 +31,7 @@ export default function GeoPieChart({ logs }) {
       {
         name: "Geo Distribution",
         type: "pie",
-        radius: ["40%", "70%"], // donut style 🔥
+        radius: ["40%", "70%"],
         center: ["50%", "45%"],
 
         data,

@@ -27,7 +27,7 @@ export default function AlertHistory({ alerts }) {
   return (
     <div className="bg-white rounded-2xl shadow-md p-5 mt-6">
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-4">
-        <h2 className="text-xl font-semibold">📜 Alert History</h2>
+        <h2 className="text-xl font-semibold">Alert History</h2>
 
         <div className="flex flex-wrap gap-3">
           <select

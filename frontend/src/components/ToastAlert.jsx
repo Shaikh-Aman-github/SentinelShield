@@ -26,7 +26,7 @@ export default function ToastAlert({ alert, onClose }) {
   return (
     <div className={`toast-alert ${getSeverityClass(alert.severity)}`}>
       <div className="toast-header">
-        <h3>🚨 Security Alert</h3>
+        <h3>Security Alert</h3>
 
         <button onClick={onClose} className="close-btn">
           <X size={16} />

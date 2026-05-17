@@ -43,7 +43,7 @@ module.exports = async (req, type) => {
   
   const geo = await getGeoData(ip);
 
-  // 🔥 Rate Limit session logic
+  //Rate Limit session logic
   if (type === "Rate Limit") {
     const existingAlert = alerts.find((alert) => {
       if (
@@ -69,7 +69,7 @@ module.exports = async (req, type) => {
     }
   }
 
-  // ✅ New alert entry
+  // New alert entry
   const newAlert = {
     requestId: `req_${Date.now()}`,
     time: new Date().toISOString(),

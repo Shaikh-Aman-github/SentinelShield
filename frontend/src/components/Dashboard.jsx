@@ -203,7 +203,7 @@ export default function Dashboard() {
 
       {/* SECURITY BOX */}
       <div className="security-box">
-        <h2>🧾 Security Analysis</h2>
+        <h2>Security Analysis</h2>
 
         <hr
           style={{

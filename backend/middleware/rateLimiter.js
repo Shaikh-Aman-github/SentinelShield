@@ -47,7 +47,7 @@ module.exports = async (req, res, next) => {
 
       await alertLogger(req, "Rate Limit");
 
-      console.log(`🚨 ALERT: Rate Limit detected from ${ip}`);
+      console.log(`ALERT: Rate Limit detected from ${ip}`);
     }
 
     return res.status(429).json({

@@ -52,12 +52,6 @@ app.use("/alerts", alertRoutes);
 app.get("/", (req, res) => res.send("SentinelShield Running"));
 app.get("/test", (req, res) => res.send("Test route working"));
 
-//frontend calling
-// app.use(express.static(path.join(__dirname, "../frontend/dist")));
-
-// app.use((req, res) => {
-//   res.sendFile(path.join(__dirname, "../frontend/dist/index.html"));
-// });
 
 server.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);

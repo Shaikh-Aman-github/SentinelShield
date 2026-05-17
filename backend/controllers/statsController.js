@@ -31,7 +31,7 @@ exports.getStats = (req, res) => {
     Malicious: 0
   };
 
-  // 🔥 Top attacker IPs
+  // Top attacker IPs
   const ipMap = {};
 
   logs.forEach(log => {
@@ -49,7 +49,7 @@ exports.getStats = (req, res) => {
     .sort((a, b) => b.count - a.count)
     .slice(0, 5);
 
-  // 🔥 Recent logs (last 5)
+  //Recent logs (last 5)
   const recent = logs.slice(-5).reverse();
 
   res.json({

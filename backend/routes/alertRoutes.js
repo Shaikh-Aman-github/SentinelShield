@@ -32,7 +32,7 @@ router.get("/", (req, res) => {
 
   const alertToSend = alerts[index];
 
-  // 🔥 Immediately mark as sent
+  //Immediately mark as sent
   alerts[index].sendToAdmin = "Yes";
 
   writeAlerts(alerts);

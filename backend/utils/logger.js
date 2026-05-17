@@ -75,7 +75,7 @@ module.exports = async (req, type, detectionStartTime) => {
   const currentTime = new Date().toISOString();
   const now = Date.now();
 
-   // ⏱️ timing
+   //timing
   const detectionTime = Date.now() - detectionStartTime;
   const responseTime = Date.now() - detectionStartTime;
 
@@ -84,7 +84,7 @@ module.exports = async (req, type, detectionStartTime) => {
     geo = await getGeoData(ip);
   }
 
-  // 🔥 Rate Limit logic (same as your version)
+  //Rate Limit logic (same as your version)
   if (type === "Rate Limit") {
     const SESSION_WINDOW = 10000; // 10 sec
     const COOLDOWN = 2 * 60 * 1000; // 2 min
@@ -228,7 +228,7 @@ module.exports = async (req, type, detectionStartTime) => {
       body: req.body || null
     },
 
-    // 🔥 NEW metadata
+    //NEW metadata
     method,
     userAgent: req.headers["user-agent"] || "unknown"
   };

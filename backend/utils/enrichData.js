@@ -1,7 +1,7 @@
 //enrichData.js
 const axios = require("axios");
 
-// 🔥 GEO + ISP
+//GEO + ISP
 const getGeoData = async (ip) => {
   try {
     const res = await axios.get(`http://ip-api.com/json/${ip}`);
@@ -19,7 +19,7 @@ const getGeoData = async (ip) => {
   }
 };
 
-// 🔥 Source Type
+//Source Type
 const getSourceType = (userAgent = "") => {
   const ua = userAgent.toLowerCase();
 
@@ -30,7 +30,7 @@ const getSourceType = (userAgent = "") => {
   return "Unknown";
 };
 
-// 🔥 Risk Score
+//Risk Score
 const getRiskScore = (type) => {
   switch (type) {
     case "Command Injection":
@@ -50,12 +50,12 @@ const getRiskScore = (type) => {
   }
 };
 
-// 🔥 Fingerprint
+//Fingerprint
 const getFingerprint = (ip, ua, type) => {
   return `${ip}_${ua.split("/")[0]}_${type.replace(/\s/g, "")}`;
 };
 
-// 🔥 Payload extraction
+//Payload extraction
 const getPayload = (req) => {
   if (req.query && Object.keys(req.query).length > 0) {
     return JSON.stringify(req.query);

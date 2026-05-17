@@ -2,7 +2,7 @@ import axios from "axios";
 
 // Vite environment variable
 const URL = import.meta.env.VITE_API_URL || "https://sentinelshield-adxf.onrender.com";
-//const URL = import.meta.env.VITE_API_URL || "http://192.168.31.203:3000";
+//const URL = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 const API = axios.create({
   baseURL: URL
