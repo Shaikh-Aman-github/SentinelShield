@@ -611,5 +611,46 @@
     },
     "method": "GET",
     "userAgent": "sqlmap"
+  },
+  {
+    "requestId": "req_1779040011260",
+    "time": "2026-05-17T17:46:51.260Z",
+    "ip": "::1",
+    "ipStatus": "Normal",
+    "geo": {
+      "country": "Local",
+      "city": "Local",
+      "isp": "Local Machine"
+    },
+    "type": "LFI",
+    "pattern": "LFI via request",
+    "payload": "{\"file\":\"/etc/passwd\"}",
+    "url": "/test?file=/etc/passwd",
+    "sourceType": "Script",
+    "fingerprint": "::1_curl_LFI",
+    "severity": "HIGH",
+    "riskScore": 6,
+    "detectionTimeMs": 1,
+    "responseTimeMs": 1,
+    "count": 1,
+    "lastTriggered": "2026-05-17T17:46:51.260Z",
+    "attackStage": "Detected → Blocked",
+    "status": "Active",
+    "falsePositive": false,
+    "request": {
+      "method": "GET",
+      "userAgent": "curl/8.18.0",
+      "headers": {
+        "host": "localhost:3000",
+        "user-agent": "curl/8.18.0",
+        "accept": "*/*"
+      },
+      "query": {
+        "file": "/etc/passwd"
+      },
+      "body": null
+    },
+    "method": "GET",
+    "userAgent": "curl/8.18.0"
   }
 ]

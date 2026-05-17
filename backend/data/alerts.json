@@ -96,5 +96,19 @@
     "userAgent": "sqlmap",
     "markAsRead": "No",
     "sendToAdmin": "Yes"
+  },
+  {
+    "requestId": "req_1779040011734",
+    "time": "2026-05-17T17:46:51.734Z",
+    "ip": "::1",
+    "type": "LFI",
+    "url": "/test?file=/etc/passwd",
+    "severity": "HIGH",
+    "count": 1,
+    "lastTriggered": "2026-05-17T17:46:51.262Z",
+    "method": "GET",
+    "userAgent": "curl/8.18.0",
+    "markAsRead": "No",
+    "sendToAdmin": "Yes"
   }
 ]
